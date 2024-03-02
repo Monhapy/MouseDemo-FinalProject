@@ -16,6 +16,10 @@ public class Character : MonoBehaviour
     public bool isPlayer = true;
     private NavMeshAgent _navMeshAgent;
     private Transform _targetPlayer;
+    //PLAYER SLIDES
+    private float _attackStartTime;
+    public float AttackSlideDuration = 0.4f;
+    public float AttackSlideSpeed = 0.06f;
     
     //STATE MACHINE
     public enum CharacterState
@@ -93,6 +97,16 @@ public class Character : MonoBehaviour
                 }
                 break;
             case CharacterState.Attacking:
+                if (isPlayer)
+                {
+                    _movementVelocity = Vector3.zero;
+                    if (Time.time < _attackStartTime + AttackSlideDuration)
+                    {
+                        float timePassed = Time.time - _attackStartTime;
+                        float lerpTime = timePassed / AttackSlideDuration;
+                        _movementVelocity = Vector3.Lerp(transform.forward * AttackSlideSpeed, Vector3.zero, lerpTime);
+                    }
+                }
                 break;
         }
       
@@ -135,6 +149,10 @@ public class Character : MonoBehaviour
                 break;
             case CharacterState.Attacking:
                 _animator.SetTrigger("Attack");
+                if (isPlayer)
+                {
+                    _attackStartTime = Time.time;
+                }
                 break;
         }
 
