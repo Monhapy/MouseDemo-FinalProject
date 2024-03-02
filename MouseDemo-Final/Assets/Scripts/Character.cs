@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     private CharacterController _cc;
@@ -14,16 +11,44 @@ public class Character : MonoBehaviour
     public float Gravity=-9.8f;
 
     private Animator _animator;
+    
+    //ENEMY
+    public bool isPlayer = true;
+    private NavMeshAgent _navMeshAgent;
+    private Transform _targetPlayer;
+    
+    //STATE MACHINE
+    public enum CharacterState
+    {
+        Normal,Attacking
+    }
+
+    public CharacterState currentState;
 
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
-        _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
+
+        if (!isPlayer)
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _targetPlayer = GameObject.FindWithTag("Player").transform;
+            _navMeshAgent.speed = MoveSpeed;
+        }
+        else
+        {
+            _playerInput = GetComponent<PlayerInput>();
+        }
     }
 
     private void CalculatePlayerMovement()
     {
+        if (_playerInput.MouseButtonDown)
+        {
+            SwitchState(CharacterState.Attacking);
+                return;
+        }
         _movementVelocity.Set(_playerInput.HorizontalInput,0f,_playerInput.VerticalInput);
         _movementVelocity.Normalize();
         //_movementVelocity = Quaternion.Euler(0, -45f, 0)*_movementVelocity;
@@ -39,21 +64,80 @@ public class Character : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void CalculateEnemyMovement()
     {
-        CalculatePlayerMovement();
-
-        if (_cc.isGrounded == false)
+        if (Vector3.Distance(_targetPlayer.position, transform.position) >= _navMeshAgent.stoppingDistance)
         {
-            _veritcalVelocity = Gravity;
-            
+            _navMeshAgent.SetDestination(_targetPlayer.position);
+            _animator.SetFloat("Speed",0.2f);
         }
         else
         {
-            _veritcalVelocity = Gravity * 0.3f;
+            _navMeshAgent.SetDestination(transform.position);
+            _animator.SetFloat("Speed",0f);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        switch (currentState)
+        {
+            case CharacterState.Normal:
+                if (isPlayer)
+                {
+                    CalculatePlayerMovement();
+                }
+                else
+                {
+                    CalculateEnemyMovement();
+                }
+                break;
+            case CharacterState.Attacking:
+                break;
+        }
+      
+
+        if (isPlayer)
+        {
+            if (_cc.isGrounded == false)
+            {
+                _veritcalVelocity = Gravity;
+            
+            }
+            else
+            {
+                _veritcalVelocity = Gravity * 0.3f;
+            }
+
+            _movementVelocity += Vector3.up * (_veritcalVelocity * Time.deltaTime);
+            _cc.Move(_movementVelocity);
         }
 
-        _movementVelocity += Vector3.up * (_veritcalVelocity * Time.deltaTime);
-        _cc.Move(_movementVelocity);
+        
+    }
+
+    private void SwitchState(CharacterState newState)
+    {
+        _playerInput.MouseButtonDown = false;
+        //Exit
+        switch (currentState)
+        {
+            case CharacterState.Normal:
+                break;
+            case CharacterState.Attacking:
+                break;
+        }
+        
+        //Enter
+        switch (newState)
+        {
+            case CharacterState.Normal:
+                break;
+            case CharacterState.Attacking:
+                break;
+        }
+
+        currentState = newState;
+        Debug.Log("Switched"+currentState);
     }
 }
