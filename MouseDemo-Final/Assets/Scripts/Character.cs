@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public float Gravity=-9.8f;
 
     private Animator _animator;
+    public Collider _swordCollider;
     
     //ENEMY
     public bool isPlayer = true;
@@ -79,6 +80,8 @@ public class Character : MonoBehaviour
         {
             _navMeshAgent.SetDestination(transform.position);
             _animator.SetFloat("Speed",0f);
+            
+            SwitchState(CharacterState.Attacking);
         }
     }
 
@@ -132,7 +135,10 @@ public class Character : MonoBehaviour
 
     private void SwitchState(CharacterState newState)
     {
-        _playerInput.MouseButtonDown = false;
+        if (isPlayer)
+        {
+            _playerInput.MouseButtonDown = false;
+        }
         //Exit
         switch (currentState)
         {
@@ -148,6 +154,11 @@ public class Character : MonoBehaviour
             case CharacterState.Normal:
                 break;
             case CharacterState.Attacking:
+                if (!isPlayer)
+                {
+                    Quaternion newRotation = Quaternion.LookRotation(_targetPlayer.position - transform.position);
+                    transform.rotation = newRotation;
+                }
                 _animator.SetTrigger("Attack");
                 if (isPlayer)
                 {
@@ -157,11 +168,19 @@ public class Character : MonoBehaviour
         }
 
         currentState = newState;
-        Debug.Log("Switched"+currentState);
+        //Debug.Log("Switched"+currentState);
     }
 
     public void AttackAnimationEnds()
     {
         SwitchState(CharacterState.Normal);
+    }
+    public void SwordColliderEnabled()
+    {
+        _swordCollider.enabled = true;
+    }
+    public void SwordColliderDisabled()
+    {
+        _swordCollider.enabled = false;
     }
 }

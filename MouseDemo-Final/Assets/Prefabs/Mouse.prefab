@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalInput: 0
   VerticalInput: 0
+  MouseButtonDown: 0
 --- !u!114 &1392844810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   Gravity: -9.8
+  isPlayer: 1
+  AttackSlideDuration: 0.4
+  AttackSlideSpeed: 0.06
+  currentState: 0
 --- !u!1 &3767580334266053742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,52 +2701,52 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.016723804
+      value: -0.00181
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0053251004
+      value: 0.00052
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0066899233
+      value: 0.00013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4827004
+      value: -0.5027848
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5167214
+      value: 0.49719968
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5167244
+      value: -0.49719968
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.48269573
+      value: 0.5027848
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90.64
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1b42dade83115c4f8df8a8e6fbd517f,
         type: 3}
