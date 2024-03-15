@@ -5,6 +5,7 @@ public class SwordCollision : MonoBehaviour
     private Collider _swordCollider;
     private GameObject _cubeEnemyObject;
     private GameObject _cameraObject;
+    public ParticleSystem swordEffect;
     
     private string _targetTag;
     private string _cameraTag;
@@ -14,6 +15,7 @@ public class SwordCollision : MonoBehaviour
     
     private void Start()
     {
+        swordEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         _targetTag = "Enemy";
         _cameraTag = "MainCamera";
             
@@ -31,6 +33,7 @@ public class SwordCollision : MonoBehaviour
         {
             _cubeEnemy.Hit();
             _cameraProp.CamAttackShake();
+            swordEffect.Play();
         }
     }
 

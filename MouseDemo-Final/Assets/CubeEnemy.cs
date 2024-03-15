@@ -12,7 +12,7 @@ public class CubeEnemy : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>();
         Rigidbody rb = GetComponent<Rigidbody>();
         
-        rb.AddForce(new Vector3(0f,0f,5f),ForceMode.Impulse);
+        rb.AddForce(new Vector3(5f,0f,0f),ForceMode.Impulse);
         renderer.material.color = hitColor;
         
     }
