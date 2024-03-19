@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorRotate : MonoBehaviour
 {
     public Camera cam; // Oyun kamerası referansı
+    public float turnSpeed = 5f; // Dönüş hızını ayarlamak için bir değişken
+
+    private Quaternion targetRotation; // Hedef rotasyonumuz
 
     void Update()
     {
@@ -16,10 +17,14 @@ public class CursorRotate : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // Tıklanan yere bakacak şekilde karakteri döndür
-                Vector3 targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                transform.LookAt(targetPosition);
+                // Tıklanan yere bakacak şekilde hedef rotasyonu hesapla
+                Vector3 targetDirection = hit.point - transform.position;
+                targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
             }
+            // Dönmekte olan karakter için slerp kullanarak yavaşça hedef rotasyona dön
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
         }
+
+        
     }
 }
