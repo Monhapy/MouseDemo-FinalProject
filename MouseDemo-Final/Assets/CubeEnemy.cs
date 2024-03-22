@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class CubeEnemy : MonoBehaviour
 {
-    public Color hitColor = Color.red;
+    public Animator enemyAnimator;
     
     public void Hit()
     {
         Debug.Log("Hitted");
-        Renderer renderer = GetComponent<Renderer>();
         Rigidbody rb = GetComponent<Rigidbody>();
         
         rb.AddForce(new Vector3(5f,0f,0f),ForceMode.Impulse);
-        renderer.material.color = hitColor;
+        enemyAnimator.SetTrigger("Damage");
         
     }
 }
