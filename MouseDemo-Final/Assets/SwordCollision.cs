@@ -6,6 +6,7 @@ public class SwordCollision : MonoBehaviour
     private GameObject _cubeEnemyObject;
     private GameObject _cameraObject;
     public ParticleSystem swordEffect;
+    public AudioSource swordAudio;
     
     private string _targetTag;
     private string _cameraTag;
@@ -34,6 +35,7 @@ public class SwordCollision : MonoBehaviour
             _cubeEnemy.Hit();
             _cameraProp.CamAttackShake();
             swordEffect.Play();
+            swordAudio.Play();
         }
     }
 
