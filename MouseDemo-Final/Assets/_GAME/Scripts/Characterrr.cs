@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class Character : MonoBehaviour
+public partial class Characterrr : MonoBehaviour
 {
     private CharacterController _cc;
     public float MoveSpeed=5f;

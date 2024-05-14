@@ -12,9 +12,11 @@ public class PlayerMovement : MonoBehaviour
    public float moveSpeed;
    public float rotationSpeed;
    [Header("Dash")]
-   public float dashDistance;
+   public float dashDuration;
    public float lastDashTime;
    public float dashCooldown;
+   public bool isDashing;
+   public float dashSpeed;
    
    private float _horizontalInput;
    private float _verticalInput;
@@ -31,9 +33,10 @@ public class PlayerMovement : MonoBehaviour
       GetInput();
       Move();
       Rotate();
-      if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastDashTime + dashCooldown) // Space tuşuna basılması ve cooldown süresinin dolmuş olması kontrolü
+      
+      if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastDashTime + dashCooldown && !isDashing) // Space tuşuna basılması, cooldown süresinin dolmuş olması ve dash yapılıyor olmaması kontrolü
       {
-         Dash();
+         StartCoroutine(PerformDash());
       }
    }
 
@@ -54,11 +57,17 @@ public class PlayerMovement : MonoBehaviour
       }
    }
 
-   private void Dash()
+   private IEnumerator PerformDash()
    {
-      Vector3 dashDirection = _playerTransform.forward * dashDistance; // Karakterin baktığı yönde ileri doğru dash mesafesi kadar hareket
-      _playerTransform.position += dashDirection;
-      lastDashTime = Time.time; // Son dash zamanını güncelle
+      isDashing = true;
+      Vector3 dashVelocity = _playerRb.transform.forward * dashSpeed;
+      _playerRb.velocity = dashVelocity;
+      lastDashTime = Time.time;
+
+      yield return new WaitForSeconds(dashDuration); // Dash süresi kadar bekle
+
+      _playerRb.velocity = Vector3.zero; // Dash sonunda hızı sıfırla
+      isDashing = false;
       
    }
 
