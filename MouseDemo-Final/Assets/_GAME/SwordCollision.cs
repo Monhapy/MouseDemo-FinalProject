@@ -33,9 +33,11 @@ public class SwordCollision : MonoBehaviour
         if (other.CompareTag(_targetTag))
         {
             _cubeEnemy.Hit();
+            _cubeEnemy.TakeDamage(1);
             _cameraProp.CamAttackShake();
             swordEffect.Play();
             swordAudio.Play();
+            
         }
     }
 

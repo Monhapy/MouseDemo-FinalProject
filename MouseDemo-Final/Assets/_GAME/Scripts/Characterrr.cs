@@ -159,7 +159,7 @@ public partial class Characterrr : MonoBehaviour
                     Quaternion newRotation = Quaternion.LookRotation(_targetPlayer.position - transform.position);
                     transform.rotation = newRotation;
                 }
-                _animator.SetTrigger("Attack");
+                //_animator.SetTrigger("Attack");
                 if (isPlayer)
                 {
                     _attackStartTime = Time.time;
