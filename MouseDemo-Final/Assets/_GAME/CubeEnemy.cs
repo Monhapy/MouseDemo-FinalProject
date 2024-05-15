@@ -21,7 +21,7 @@ public class CubeEnemy : MonoBehaviour
     {
         if (health<=0)
         {
-            enemyAnimator.SetTrigger("Dead");
+            enemyAnimator.SetBool("Dead",true);
             Debug.Log("EnemyDead");
         }
     }
