@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -85,8 +86,14 @@ public partial class Characterrr : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        PerformRoll();
+    }
+
     private void FixedUpdate()
     {
+       
         switch (currentState)
         {
             case CharacterState.Normal:
@@ -180,6 +187,14 @@ public partial class Characterrr : MonoBehaviour
     public void SwordColliderDisabled()
     {
         _swordCollider.enabled = false;
+    }
+
+    public void PerformRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _animator.SetTrigger("Roll");
+        }
     }
 }
 
