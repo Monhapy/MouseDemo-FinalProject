@@ -588,6 +588,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505341544}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &725348837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725348838}
+  m_Layer: 0
+  m_Name: ArrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &725348838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725348837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5946416771954587661}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747198738
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,11 +5125,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5946416771954587661}
   - component: {fileID: 8731019071761153105}
-  - component: {fileID: 8731019071761153112}
   - component: {fileID: 8731019071761153110}
+  - component: {fileID: 8731019071761153112}
   - component: {fileID: 8731019071761153107}
   - component: {fileID: 8731019071761153104}
   - component: {fileID: 8731019071761153113}
+  - component: {fileID: 8731019071761153114}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -5644,6 +5676,7 @@ Transform:
   - {fileID: 3024191767327230827}
   - {fileID: 7325180312395000831}
   - {fileID: 1951431354}
+  - {fileID: 725348838}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7599,6 +7632,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 505183482}
+--- !u!114 &8731019071761153114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454552566570182421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2478569398ec044babdca754f18cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRangedAttacking: 0
+  arrow: {fileID: 6673535001803438719, guid: 6fb557d7681baf34ba2addf4110894d1, type: 3}
+  arrowPoint: {fileID: 725348837}
+  arrowSpeed: 5
+  arrowScale: 1
 --- !u!1001 &8731019071811455936
 PrefabInstance:
   m_ObjectHideFlags: 0
