@@ -7,7 +7,7 @@ public class PlayerRangedAttack : MonoBehaviour
     
 
     public bool isRangedAttacking;
-
+    public Animator playerAnimator;
     public GameObject arrow,arrowPoint;
     public float arrowSpeed,arrowScale;
 
@@ -22,6 +22,7 @@ public class PlayerRangedAttack : MonoBehaviour
         if (Input.GetMouseButton(1) && isRangedAttacking == false)        //sol tıka basarsa fire true olsun
         {
             //MouseStateManager.instance.ControlAndSwitchState(MouseStateManager.instance.RangedAttackState);
+            playerAnimator.SetBool("BowUp",true);
             isRangedAttacking = true;
 
         }
@@ -30,6 +31,7 @@ public class PlayerRangedAttack : MonoBehaviour
         {
 
             //MouseStateManager.instance.ControlAndSwitchState(MouseStateManager.instance.IdleState);
+            playerAnimator.SetBool("BowUp",false);
             isRangedAttacking = false;
             //weapon.Fire();
             ArrowSpawn();

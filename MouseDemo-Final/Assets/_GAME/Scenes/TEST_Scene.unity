@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 20260159}
   - component: {fileID: 20260158}
   - component: {fileID: 20260162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 505183485}
   - component: {fileID: 505183481}
   - component: {fileID: 505183484}
+  - component: {fileID: 505183487}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -483,7 +484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505183480}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8643372fa12694042b3578c83e908969, type: 3}
   m_Name: 
@@ -491,6 +492,23 @@ MonoBehaviour:
   followTransform: {fileID: 5946416771954587661}
   camTransform: {fileID: 505183483}
   camMoveSpeed: 2
+--- !u!114 &505183487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505183480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b573474a7ed9b684ea347aab16428020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 505183482}
+  characterTransform: {fileID: 5946416771954587661}
+  moveDistance: 10
+  moveDuration: 1
+  reMoveDuration: 1
 --- !u!1 &505341544
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +606,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505341544}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &518531279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518531281}
+  - component: {fileID: 518531280}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &518531280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518531279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d222b5a4c50a03f4da8118d53132ed61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 505183480}
+  player: {fileID: 5454552566570182421}
+--- !u!4 &518531281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518531279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.551762, y: 3.8578784, z: 21.21646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725348837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,9 +5195,10 @@ GameObject:
   - component: {fileID: 8731019071761153104}
   - component: {fileID: 8731019071761153113}
   - component: {fileID: 8731019071761153114}
+  - component: {fileID: 8731019071761153115}
   m_Layer: 0
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7645,10 +7710,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRangedAttacking: 0
+  playerAnimator: {fileID: 8731019071761153110}
   arrow: {fileID: 6673535001803438719, guid: 6fb557d7681baf34ba2addf4110894d1, type: 3}
   arrowPoint: {fileID: 725348837}
   arrowSpeed: 5
   arrowScale: 1
+--- !u!114 &8731019071761153115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454552566570182421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b0ad24388a1704a8febae7ee984508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orthographicCamera: {fileID: 505183482}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &8731019071811455936
 PrefabInstance:
   m_ObjectHideFlags: 0
