@@ -16794,6 +16794,7 @@ GameObject:
   - component: {fileID: 2304547297882817248}
   - component: {fileID: 6513834709682358815}
   - component: {fileID: 6352831964349391268}
+  - component: {fileID: 759418207}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -16985,6 +16986,19 @@ MonoBehaviour:
   rollDistance: 0.5
   rollDuration: 0.5
   rollDelay: 0.3
+--- !u!65 &759418207
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623135735269029072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7911868, z: 1}
+  m_Center: {x: 0, y: 0.3955934, z: 0}
 --- !u!1 &5809262842639739707
 GameObject:
   m_ObjectHideFlags: 0
