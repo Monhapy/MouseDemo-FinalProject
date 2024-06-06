@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 802365700, guid: 6924fcdc46923db4e84d13cfb722624e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 759418206}
     - target: {fileID: 5082320706498880295, guid: 6924fcdc46923db4e84d13cfb722624e,
         type: 3}
       propertyPath: m_Name
@@ -387,13 +391,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1978032}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &802365698 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1955683436382905319, guid: 6924fcdc46923db4e84d13cfb722624e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1978032}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &802365700
+--- !u!114 &802365706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,29 +400,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 802365694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1396d97488a71cf44836138b6e5ad276, type: 3}
+  m_Script: {fileID: 11500000, guid: f2fafb9c2d81897409d6cd4418a7719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 759418206}
-  attackDistance: 1
-  chaseDistance: 10
-  chaseSpeed: 5
-  attackDelay: 2
-  damage: 10
-  enemyAnim: {fileID: 802365698}
---- !u!114 &802365701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802365694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6d729c774520e4e94cbc99817f63ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
 --- !u!1001 &988738748
 PrefabInstance:
   m_ObjectHideFlags: 0

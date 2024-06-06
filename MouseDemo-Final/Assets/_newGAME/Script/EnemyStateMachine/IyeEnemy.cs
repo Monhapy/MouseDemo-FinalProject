@@ -34,8 +34,8 @@ public class IyeEnemy : MonoBehaviour
             // Saldırı mesafesinde değilse takip et
             if (distanceToPlayer > attackDistance)
             {
+                //StartCoroutine(FollowDelay());
                 _stateMachine.currentState = MeleeStateMachine.EnemyStates.Follow;
-
             }
             else
             {
@@ -96,6 +96,12 @@ public class IyeEnemy : MonoBehaviour
         // Saldırı mesafesi için kırmızı bir çember çiz
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackDistance);
+    }
+
+    private IEnumerator FollowDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        _stateMachine.currentState = MeleeStateMachine.EnemyStates.Follow;
     }
 }
 
