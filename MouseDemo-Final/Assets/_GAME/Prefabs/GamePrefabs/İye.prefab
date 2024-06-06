@@ -212,7 +212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6995206680265630788
 Transform:
   m_ObjectHideFlags: 0
@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 802365700}
   - component: {fileID: 802365701}
   - component: {fileID: 802365706}
+  - component: {fileID: 802365714}
   m_Layer: 0
   m_Name: "\u0130ye"
   m_TagString: Enemy
@@ -633,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 1955683436382905319}
-  health: 100
+  health: 1
 --- !u!54 &1955683436382905318
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -663,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  attackDistance: 1
+  attackDistance: 1.42
   chaseDistance: 10
   chaseSpeed: 2
   attackDelay: 2
@@ -694,6 +695,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fafb9c2d81897409d6cd4418a7719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &802365714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082320706498880295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27854a44d1153644b8b7a756ecc0ce12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 3175007957642464417}
 --- !u!1 &5212437641675283504
 GameObject:
   m_ObjectHideFlags: 0

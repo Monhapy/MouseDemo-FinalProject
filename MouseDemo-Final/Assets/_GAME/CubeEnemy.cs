@@ -7,6 +7,13 @@ public class CubeEnemy : MonoBehaviour
 {
     public Animator enemyAnimator;
     public int health;
+    private MeleeStateMachine _stateMachine;
+
+    private void Start()
+    {
+        _stateMachine = gameObject.GetComponent<MeleeStateMachine>();
+    }
+
     public void Hit()
     {
         Debug.Log("Hitted");
@@ -21,7 +28,8 @@ public class CubeEnemy : MonoBehaviour
     {
         if (health<=0)
         {
-            enemyAnimator.SetBool("Dead",true);
+            _stateMachine.currentState = MeleeStateMachine.EnemyStates.Death;
+            //enemyAnimator.SetBool("Dead",true);
             Debug.Log("EnemyDead");
         }
     }

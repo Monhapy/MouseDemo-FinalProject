@@ -86,6 +86,7 @@ public class IyeEnemy : MonoBehaviour
     {
         //Debug.Log("DeathUpdating");
         enemyAnim.SetBool("Dead",true);
+        
     }
     void OnDrawGizmos()
     {
