@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 1955683436382905319}
   health: 1
+  _stateMachine: {fileID: 802365701}
 --- !u!54 &1955683436382905318
 Rigidbody:
   m_ObjectHideFlags: 0

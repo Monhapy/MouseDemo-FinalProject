@@ -14,11 +14,12 @@ public class IyeEnemy : MonoBehaviour
     public Animator enemyAnim;
     private float lastAttackTime;
     private MeleeStateMachine _stateMachine;
+    private CubeEnemy heatlh;
 
     private void Start()
     {
         _stateMachine = gameObject.GetComponent<MeleeStateMachine>();
-        
+        heatlh = gameObject.GetComponent<CubeEnemy>();
     }
 
     void Update()
@@ -56,6 +57,12 @@ public class IyeEnemy : MonoBehaviour
         {
             // Takip mesafesinde değilse animasyonları durdur
             _stateMachine.currentState = MeleeStateMachine.EnemyStates.Idle;
+        }
+        if (heatlh.health <= 0)
+        {
+            _stateMachine.currentState = MeleeStateMachine.EnemyStates.Death;
+            //enemyAnimator.SetBool("Dead",true);
+            Debug.Log("EnemyDead");
         }
     }
     
