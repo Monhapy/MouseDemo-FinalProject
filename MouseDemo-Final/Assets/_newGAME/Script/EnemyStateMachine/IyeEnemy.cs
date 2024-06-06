@@ -61,7 +61,7 @@ public class IyeEnemy : MonoBehaviour
     
     public void Follow()
     {
-        Debug.Log("FollowUpdating");
+        //Debug.Log("FollowUpdating");
         var position = transform.position;
         position = Vector3.MoveTowards(position, player.position, chaseSpeed * Time.deltaTime);
         position.y = 0;
@@ -71,20 +71,20 @@ public class IyeEnemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("AttackUpdating");
+        //Debug.Log("AttackUpdating");
         enemyAnim.SetTrigger("isAttacking");
     }
 
     public void Idle()
     {
-        Debug.Log("IdleUpdating");
+        //Debug.Log("IdleUpdating");
         enemyAnim.SetBool("isRunning", false);
         enemyAnim.SetBool("isAttacking", false);
     }
 
     public void Death()
     {
-        Debug.Log("DeathUpdating");
+        //Debug.Log("DeathUpdating");
         enemyAnim.SetBool("Dead",true);
     }
     void OnDrawGizmos()

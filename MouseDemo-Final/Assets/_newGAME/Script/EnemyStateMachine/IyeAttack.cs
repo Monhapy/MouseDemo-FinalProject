@@ -9,7 +9,7 @@ public class IyeAttack : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Animator>().SetTrigger("Damage");
-            
+            Debug.Log("Oldu");
         }
     }
 }
