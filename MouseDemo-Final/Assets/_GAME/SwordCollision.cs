@@ -24,8 +24,8 @@ public class SwordCollision : MonoBehaviour
         _cameraObject = GameObject.FindGameObjectWithTag(_cameraTag);
 
         _cameraProp = _cameraObject.GetComponent<CameraProp>();
-        _cubeEnemy = _cubeEnemyObject.GetComponent<CubeEnemy>();
-        _swordCollider = gameObject.GetComponent<BoxCollider>();
+       // _cubeEnemy = _cubeEnemyObject.GetComponent<CubeEnemy>();
+       // _swordCollider = gameObject.GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)

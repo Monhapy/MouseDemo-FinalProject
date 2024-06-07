@@ -8,11 +8,7 @@ public class CubeEnemy : MonoBehaviour
     public Animator enemyAnimator;
     public int health;
     public MeleeStateMachine _stateMachine;
-
-    private void Start()
-    {
-        //_stateMachine = gameObject.GetComponent<MeleeStateMachine>();
-    }
+    
 
     public void Hit()
     {
@@ -21,11 +17,6 @@ public class CubeEnemy : MonoBehaviour
         
         rb.AddForce(new Vector3(5f,0f,0f),ForceMode.Impulse);
         enemyAnimator.SetTrigger("Damage");
-        
-    }
-
-    private void Update()
-    {
         
     }
 

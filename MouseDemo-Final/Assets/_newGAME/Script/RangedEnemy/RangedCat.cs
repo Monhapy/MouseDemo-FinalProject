@@ -14,6 +14,93 @@ public class RangedCat : MonoBehaviour
     public Animator enemyAnim;
     private float _lastAttackTime;
     
+    private RangedStateMachine _stateMachine;
+    private CubeEnemy heatlh;
+    
+    private void Start()
+    {
+        _stateMachine = gameObject.GetComponent<RangedStateMachine>();
+        
+    }
+    
+    void Update()
+    {
+        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
+
+        // Düşmanın oyuncuya her zaman bakmasını sağla
+        Vector3 lookDirection = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(lookDirection);
+
+        if (distanceToPlayer < chaseDistance)
+        {
+            // Saldırı mesafesinde değilse takip et
+            if (distanceToPlayer > attackDistance)
+            {
+                //StartCoroutine(FollowDelay());
+                _stateMachine.currentState = RangedStateMachine.EnemyStates.Follow;
+            }
+            else
+            {
+                // Saldırı mesafesindeyse ve beklemesi gerekiyorsa
+                if (Time.time > _lastAttackTime + attackDelay)
+                {
+                    _stateMachine.currentState = RangedStateMachine.EnemyStates.Attack;
+                    _lastAttackTime = Time.time;
+                }
+                else
+                {
+                    // Saldırı beklerken koşma animasyonunu durdur
+                    _stateMachine.currentState = RangedStateMachine.EnemyStates.Idle;
+                }
+            }
+        }
+        else
+        {
+            // Takip mesafesinde değilse animasyonları durdur
+            _stateMachine.currentState = RangedStateMachine.EnemyStates.Idle;
+        }
+        if (heatlh.health <= 0)
+        {
+            _stateMachine.currentState = RangedStateMachine.EnemyStates.Death;
+            //enemyAnimator.SetBool("Dead",true);
+            Debug.Log("EnemyDead");
+        }
+    }
+
+
+    public void Idle()
+    {
+        //Debug.Log("IdleUpdating");
+        enemyAnim.SetBool("isRunning", false);
+        enemyAnim.SetBool("isAttacking", false);
+    }
+
+    public void Attack()
+    {
+        //Debug.Log("AttackUpdating");
+        enemyAnim.SetTrigger("isAttacking");
+    }
+
+    public void Follow()
+    {
+        //Debug.Log("FollowUpdating");
+        var position = transform.position;
+        position = Vector3.MoveTowards(position, player.position, chaseSpeed * Time.deltaTime);
+        position.y = 0;
+        transform.position = position;
+        enemyAnim.SetBool("isRunning", true);
+    }
+
+    public void Death()
+    {
+        //Debug.Log("DeathUpdating");
+        enemyAnim.SetBool("Dead",true);
+    }
+
+    public void Dodge()
+    {
+        
+    }
     void OnDrawGizmos()
     {
         // Kovalama mesafesi için mavi bir çember çiz
